@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Container, VStack, Text, Input, Button, Image, Box, Link, IconButton } from "@chakra-ui/react";
+import { Container, VStack, Text, Input, Button, Image, Box, Link, IconButton, Textarea } from "@chakra-ui/react";
 import { FaCalendarPlus } from "react-icons/fa";
 
 const Index = () => {
   const [image, setImage] = useState(null);
   const [calendarLink, setCalendarLink] = useState("");
 
-  const handleImageUpload = (event) => {
+  const handleFileUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -23,7 +23,7 @@ const Index = () => {
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
       <VStack spacing={4}>
         <Text fontSize="2xl">Upload Your Bill</Text>
-        <Input type="file" accept="image/*" onChange={handleImageUpload} />
+        <Input type="file" accept="image/*,application/pdf" onChange={handleFileUpload} />
         {image && <Image src={image} alt="Uploaded Bill" boxSize="300px" objectFit="cover" />}
         {calendarLink && (
           <Box textAlign="center">
